@@ -9,9 +9,9 @@ class ViewController: UIViewController {
     }
 
     override func viewWillAppear(_ animated: Bool) {
-        queueGraph.animateIn(Queue(users: 3, currentPosition: 2))
+        queueGraph.animateIn(Queue(users: 10, currentPosition: 5))
         DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
-            self.queueGraph.updateQueue(Queue(users: 2, currentPosition: 1))
+            self.queueGraph.updateQueue(Queue(users: 8, currentPosition: 3))
         }
         //queueGraph.queue = Queue(users: 2, currentPosition: 1)
     }
