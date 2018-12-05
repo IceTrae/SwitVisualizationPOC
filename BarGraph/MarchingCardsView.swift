@@ -9,29 +9,7 @@ class MarchingCardsView: UIView {
     var maxHeight: CGFloat {
         return columnWidth * 1.18
     }
-    var queue: Queue? {
-        didSet {
-            layoutIfNeeded()
-            guard let queue = queue else {
-                return
-            }
-
-            cards = Array(1...queue.users).map({ createView(location: 5, position: $0) })
-//            cards = [
-//                createView(location: 5, position: 1),
-//                createView(location: 5, position: 2),
-//                createView(location: 5, position: 3),
-//                createView(location: 5, position: 4),
-//                createView(location: 5, position: 5),
-//                createView(location: 5, position: 6),
-//                createView(location: 5, position: 7),
-//                createView(location: 5, position: 8),
-//                createView(location: 5, position: 9),
-//                createView(location: 5, position: 10),
-//                createView(location: 5, position: 11),
-//            ]
-        }
-    }
+    var queue: Queue?
     let queuePosition = 2
     var columnWidth: CGFloat {
         return (bounds.width / 6.4) - margin
@@ -101,7 +79,33 @@ class MarchingCardsView: UIView {
 
     func animateIn(_ queue: Queue) {
         self.queue = queue
+        layoutIfNeeded()
+        removeCards()
+        cards = Array(1...queue.users).map({ createView(location: 5, position: $0) })
         animateIn()
+    }
+
+    func animateIn() {
+        let allCards = cards.sorted(by: { $0.linePosition ?? 0 < $1.linePosition ?? 0 })
+        var cardsToMove: [CardView] = allCards.filter({ $0.currentLocation != 5})
+        if let nextCard = allCards.first(where: { $0.currentLocation == 5 }) {
+            cardsToMove.append(nextCard)
+        }
+
+        UIView.animate(
+            withDuration: 0.1,
+            delay: 0.0,
+            options: [.curveLinear, .allowUserInteraction],
+            animations: {
+                cardsToMove.forEach({
+                    self.viewAnimate(view: $0, direction: .right)
+                })
+            },
+            completion: { [weak self] finished in
+                if (cardsToMove.first(where: { $0.linePosition == self?.queue?.currentPosition && $0.currentLocation == 0 }) == nil) {
+                    self?.animateIn()
+                }
+            })
     }
 
     func updateQueue(_ newQueue: Queue) {
@@ -141,32 +145,12 @@ class MarchingCardsView: UIView {
                     self.viewsAnimate(cards: newCards, direction: .right)
                     self.cards.append(contentsOf: newCards)
                 }
+
+                self.queue = newQueue
             })
         }
         
 
-    }
-
-    func animateIn() {
-        let allCards = cards.sorted(by: { $0.linePosition ?? 0 < $1.linePosition ?? 0 })
-        var cardsToMove: [CardView] = allCards.filter({ $0.currentLocation != 5})
-        if let nextCard = allCards.first(where: { $0.currentLocation == 5 }) {
-            cardsToMove.append(nextCard)
-        }
-        UIView.animate(
-            withDuration: 0.3,
-            delay: 0.0,
-            options: [.curveLinear, .allowUserInteraction],
-            animations: {
-                cardsToMove.forEach({
-                    self.viewAnimate(view: $0, direction: .right)
-                })
-        },
-            completion: { [weak self] finished in
-                if (cardsToMove.first(where: { $0.linePosition == self?.queue?.currentPosition && $0.currentLocation == 0 }) == nil) {
-                    self?.animateIn()
-                }
-        })
     }
 
     func viewsAnimate(cards: [CardView], direction: AnimationDirection) {
@@ -196,6 +180,10 @@ class MarchingCardsView: UIView {
                     self?.viewsAnimate(cards: newCards, direction: direction)
                 }
         })
+    }
+
+    func removeCards() {
+        removeCards(cards: cards)
     }
 
     func removeCards(cards: [CardView]) {
