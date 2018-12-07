@@ -29,7 +29,7 @@
                                 <rect key="frame" x="0.0" y="651" width="375" height="16"/>
                                 <color key="backgroundColor" red="0.14901960780000001" green="0.16078431369999999" blue="0.2274509804" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="16" id="Aea-4A-skc"/>
+                                    <constraint firstAttribute="height" constant="6" id="Aea-4A-skc"/>
                                 </constraints>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="People In Queue:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pkI-rb-VQc">
@@ -93,7 +93,7 @@
                             <constraint firstItem="Ujc-2b-Ufb" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="JKS-hC-LL2"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="Rb9-Yc-QJd" secondAttribute="trailing" constant="8" id="NKQ-GL-ZDP"/>
                             <constraint firstItem="Rb9-Yc-QJd" firstAttribute="top" secondItem="lMd-02-FKs" secondAttribute="bottom" constant="4" id="QHe-HX-E6Y"/>
-                            <constraint firstItem="VLg-Mg-bnM" firstAttribute="top" secondItem="m4v-z7-6tO" secondAttribute="bottom" constant="-8" id="Qyi-rG-1a9"/>
+                            <constraint firstItem="VLg-Mg-bnM" firstAttribute="top" secondItem="m4v-z7-6tO" secondAttribute="bottom" constant="1" id="Qyi-rG-1a9"/>
                             <constraint firstAttribute="trailing" secondItem="m4v-z7-6tO" secondAttribute="trailing" id="VEt-o7-Znc"/>
                             <constraint firstItem="GiH-fJ-wpe" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="WVZ-6J-t8g"/>
                             <constraint firstItem="FTy-Hc-hQg" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="8" id="XZk-d7-x8r"/>
