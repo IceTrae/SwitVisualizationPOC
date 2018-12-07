@@ -3,12 +3,26 @@
    version = "1.0">
    <ContextStates>
       <ContextState
+         contextName = "MarchingCardsView.updateQueue(_:):MarchingCardsView.swift">
+      </ContextState>
+      <ContextState
+         contextName = "closure #1 in closure #6 in MarchingCardsView.viewsAnimate(cards:direction:):MarchingCardsView.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "cards">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
          contextName = "MarchingCardsView.animateIn():MarchingCardsView.swift">
          <PersistentStrings>
             <PersistentString
                value = "cards">
             </PersistentString>
          </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "MarchingCardsView.createView(location:position:):MarchingCardsView.swift">
       </ContextState>
    </ContextStates>
 </VariablesViewState>

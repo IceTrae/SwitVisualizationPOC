@@ -38,8 +38,6 @@ class ViewController: UIViewController {
     }
 
     @IBAction func resetCards(_ sender: Any) {
-        users = 15
-        currentPosition = 8
         queueGraph.removeCards()
         queueGraph.animateIn(Queue(users: users, currentPosition: currentPosition))
         hasAnimated = true
@@ -47,10 +45,11 @@ class ViewController: UIViewController {
 
     @IBAction func animateCards(_ sender: Any) {
         if hasAnimated {
-            users -= 1
-            currentPosition -= 1//currentPosition % 2 == 0 ? 1 : 3
+//            users -= 1
+//            currentPosition -= 1//currentPosition % 2 == 0 ? 1 : 3
         } else {
-            queueGraph.animateIn(Queue(users: users, currentPosition: currentPosition))
+            resetCards("")
+            return
         }
 
         hasAnimated = true
@@ -59,12 +58,10 @@ class ViewController: UIViewController {
 
     @IBAction func userCountChanged(_ sender: Any) {
         userCountLabel.text = "\(Int(userCountSlider.value))"
-        hasAnimated = false
     }
 
     @IBAction func currentPositionChanged(_ sender: Any) {
         currentPositionLabel.text = "\(Int(currentPositionSlider.value))"
-        hasAnimated = false
     }
 }
 

@@ -33,48 +33,6 @@ class MarchingCardsView: UIView {
         for n in 0..<columns {
             createLocations(index: n)
         }
-
-        //for v in 1..<usersInQueue {
-            //if let position = positions[0] {
-
-//                cards[1] = createView(position: 3)
-//                cards[2] = createView(position: 4)
-//                cards[3] = createView(position: 5)
-           // }
-       // }
-
-//        guard let view = cards[1], let view2 = cards[2], let view3 = cards[3] else {
-//            return
-//        }
-
-//        UIView.animate(withDuration: 1.0,
-//                       delay: 2.0,
-//                       options: [.curveEaseInOut , .allowUserInteraction],
-//                       animations: {
-//                            self.cards.forEach({
-//                                self.viewAnimate(view: $0, direction: .left)
-//                            })
-////                            self.viewAnimate(view: view, destination: 2)
-////                            self.viewAnimate(view: view2, destination: 3)
-////                            self.viewAnimate(view: view3, destination: 4)
-//                       //                        view.frame = self.positions[3]!
-////                        //view.transform = CGAffineTransform(scaleX: 1.2, y: 1.2)
-////                        //                            view.center = CGPoint(x: view.center.x + view.frame.width, y: view.center.y)
-////                        view.alpha = 0.6
-//
-//                       },
-//                       completion: { finished in
-//                       })
-
-//        CATransaction.begin()
-//        CATransaction.setAnimationDuration(1.0)
-//        view.shapeLayer.mask?.position = self.positions[2]!.origin;
-//        view.shapeLayer.mask?.bounds = self.positions[2]!;
-//        view2.shapeLayer.mask?.position = self.positions[3]!.origin;
-//        view2.shapeLayer.mask?.bounds = self.positions[3]!;
-//        //CATransaction.setAnimationTimingFunction(CAMediaTimingFunction.eas.easeInEaseOut)
-//        //CATransaction.setAnimationTimingFunction(animation.timingFunction)
-//        CATransaction.commit()
     }
 
     func animateIn(_ queue: Queue) {
@@ -114,58 +72,73 @@ class MarchingCardsView: UIView {
             return
         }
 
-        let queueDiff = queue.users - newQueue.users
-        print("Queue difference: \(queueDiff)")
-        if queue.currentPosition != newQueue.currentPosition {
-            UIView.animate(
-                withDuration: 1.0,
-                delay: 0.0,
-                options: [.curveEaseInOut, .allowUserInteraction],
-                animations: {
-                    self.cards.forEach({
-                        self.viewAnimate(view: $0, direction: .left)
-                    })
-            },
-            completion: { [weak self] finished in
-                guard let self = self else {
-                    return
-                }
-
-                if queueDiff > 0 {
-                    let dropIndex = self.sortedCards.count - queueDiff
-                    let dropCards = Array(self.cards[dropIndex...])
-                    self.removeCards(cards: dropCards)
-                    self.cards = Array(self.cards[..<dropIndex])
-                }
-
-                if queueDiff < 0 { // queue diff represents the number of new cards to be made
-                    let lastPosition = self.sortedCards.last?.linePosition ?? 1
-                    let newLastPosition = lastPosition + abs(queueDiff)
-                    let newCards = Array(lastPosition...newLastPosition).map({ self.createView(location: 5, position: $0) })
-                    self.viewsAnimate(cards: newCards, direction: .right)
-                    self.cards.append(contentsOf: newCards)
-                }
-
-                self.queue = newQueue
-            })
+        marchCards(stepCount: queue.currentPosition - newQueue.currentPosition) {
+            self.adjustCards(cardsCount: queue.users - newQueue.users)
         }
-        
+        self.queue = newQueue
+    }
 
+    func marchCards(stepCount: Int, completion: @escaping () -> ()) {
+        guard stepCount != 0 else {
+            completion()
+            return
+        }
+
+        let direction: AnimationDirection = stepCount > 0 ? .left : .right
+        let addend = stepCount.signum() * -1
+        UIView.animate(
+            withDuration: 0.5,
+            delay: 0.0,
+            options: [.curveEaseInOut, .allowUserInteraction],
+            animations: {
+                self.cards.forEach({
+                    self.viewAnimate(view: $0, direction: direction)
+                })
+        },
+            completion: { [weak self] finished in
+                self?.marchCards(stepCount: stepCount + addend, completion: completion)
+        })
+    }
+
+    func adjustCards(cardsCount: Int) {
+        guard cardsCount != 0 else {
+            return
+        }
+
+        if cardsCount < 0 {
+            addCards(count: abs(cardsCount))
+        } else {
+            dropCards(count: cardsCount)
+        }
+    }
+
+    func addCards(count: Int) {
+        let lastPosition = sortedCards.last?.linePosition ?? 1
+        let newLastPosition = lastPosition + count
+        let newCards = Array(lastPosition + 1...newLastPosition).map({ self.createView(location: 5, position: $0) })
+        self.viewsAnimate(cards: newCards, direction: .right)
+    }
+
+    func dropCards(count: Int) {
+        let dropIndex = self.sortedCards.count - count
+        let dropCards = Array(self.cards[dropIndex...])
+        self.removeCards(cards: dropCards)
+        self.cards = Array(self.cards[..<dropIndex])
     }
 
     func viewsAnimate(cards: [CardView], direction: AnimationDirection) {
         let allCards = self.cards.sorted(by: { $0.linePosition ?? 0 < $1.linePosition ?? 0 })
         let newCards = cards.sorted(by: { $0.linePosition ?? 0 < $1.linePosition ?? 0 })
-        let target = allCards.last?.linePosition
+        let target = (allCards.last?.currentLocation ?? 1) + 1
         var cardsToMove: [CardView] = newCards.filter({ $0.currentLocation != 5})
         if let nextCard = newCards.first(where: { $0.currentLocation == 5 }) {
             cardsToMove.append(nextCard)
         }
-        guard let targetPostion = target, target ?? 5 < 5 else {
+        guard target < 5 else {
             return
         }
         UIView.animate(
-            withDuration: 0.3,
+            withDuration: 0.1,
             delay: 0.0,
             options: [.curveLinear, .allowUserInteraction],
             animations: {
@@ -174,10 +147,11 @@ class MarchingCardsView: UIView {
                 })
         },
             completion: { [weak self] finished in
-
-                if (cards.first(where: { $0.currentLocation == targetPostion }) == nil) {
+                if (newCards.first(where: { $0.currentLocation == target }) == nil) {
                     print("animate again")
                     self?.viewsAnimate(cards: newCards, direction: direction)
+                } else {
+                    self?.cards.append(contentsOf: newCards)
                 }
         })
     }
