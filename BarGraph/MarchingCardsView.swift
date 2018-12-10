@@ -10,7 +10,7 @@ class MarchingCardsView: UIView {
         return columnWidth * 1.18
     }
     var queue: Queue?
-    let queuePosition = 2
+    let startLocation = 5
     var columnWidth: CGFloat {
         return (bounds.width / 6.4) - margin
     }
@@ -36,17 +36,21 @@ class MarchingCardsView: UIView {
     }
 
     func animateIn(_ queue: Queue) {
-        self.queue = queue
+        guard queue.currentPosition <= queue.users else {
+            return
+        }
+
         layoutIfNeeded()
         removeCards()
-        cards = Array(1...queue.users).map({ createView(location: 5, position: $0) })
+        self.queue = queue
+        cards = Array(1...queue.users).map({ createView(location: startLocation, position: $0) })
         animateIn()
     }
 
     func animateIn() {
         let allCards = cards.sorted(by: { $0.linePosition ?? 0 < $1.linePosition ?? 0 })
-        var cardsToMove: [CardView] = allCards.filter({ $0.currentLocation != 5})
-        if let nextCard = allCards.first(where: { $0.currentLocation == 5 }) {
+        var cardsToMove: [CardView] = allCards.filter({ $0.currentLocation != startLocation})
+        if let nextCard = allCards.first(where: { $0.currentLocation == startLocation }) {
             cardsToMove.append(nextCard)
         }
 
@@ -67,6 +71,11 @@ class MarchingCardsView: UIView {
     }
 
     func updateQueue(_ newQueue: Queue) {
+        guard newQueue.currentPosition <= newQueue.users else {
+            removeCards()
+            return
+        }
+
         guard let queue = queue else {
             animateIn(newQueue)
             return
@@ -115,7 +124,7 @@ class MarchingCardsView: UIView {
     func addCards(count: Int) {
         let lastPosition = sortedCards.last?.linePosition ?? 1
         let newLastPosition = lastPosition + count
-        let newCards = Array(lastPosition + 1...newLastPosition).map({ self.createView(location: 5, position: $0) })
+        let newCards = Array(lastPosition + 1...newLastPosition).map({ self.createView(location: startLocation, position: $0) })
         self.viewsAnimate(cards: newCards, direction: .right)
     }
 
@@ -130,11 +139,11 @@ class MarchingCardsView: UIView {
         let allCards = self.cards.sorted(by: { $0.linePosition ?? 0 < $1.linePosition ?? 0 })
         let newCards = cards.sorted(by: { $0.linePosition ?? 0 < $1.linePosition ?? 0 })
         let target = (allCards.last?.currentLocation ?? 1) + 1
-        var cardsToMove: [CardView] = newCards.filter({ $0.currentLocation != 5})
-        if let nextCard = newCards.first(where: { $0.currentLocation == 5 }) {
+        var cardsToMove: [CardView] = newCards.filter({ $0.currentLocation != startLocation})
+        if let nextCard = newCards.first(where: { $0.currentLocation == startLocation }) {
             cardsToMove.append(nextCard)
         }
-        guard target < 5 else {
+        guard target < startLocation else {
             return
         }
         UIView.animate(
@@ -148,7 +157,6 @@ class MarchingCardsView: UIView {
         },
             completion: { [weak self] finished in
                 if (newCards.first(where: { $0.currentLocation == target }) == nil) {
-                    print("animate again")
                     self?.viewsAnimate(cards: newCards, direction: direction)
                 } else {
                     self?.cards.append(contentsOf: newCards)
@@ -157,6 +165,7 @@ class MarchingCardsView: UIView {
     }
 
     func removeCards() {
+        queue = nil
         removeCards(cards: cards)
     }
 
