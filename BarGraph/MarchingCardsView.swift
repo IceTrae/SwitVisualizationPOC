@@ -10,13 +10,19 @@ class MarchingCardsView: UIView {
         return columnWidth * 1.18
     }
     var queue: Queue?
-    let startLocation = 5
+    var startLocation: Int {
+        return columns / 2
+    }
     var columnWidth: CGFloat {
         return (bounds.width / 6.4) - margin
     }
 
     var midpoint: CGFloat {
         return CGFloat(floor(Float(columns / 2)))
+    }
+
+    var cardCenterX: CGFloat {
+        return positions[0]?.midX ?? frame.midX
     }
 
     var positions: [Int: CGRect] = [:]
@@ -35,7 +41,7 @@ class MarchingCardsView: UIView {
         }
     }
 
-    func animateIn(_ queue: Queue) {
+    func animateIn(_ queue: Queue, completion: (() -> Void)? = nil) {
         guard queue.currentPosition <= queue.users else {
             return
         }
@@ -44,10 +50,10 @@ class MarchingCardsView: UIView {
         removeCards()
         self.queue = queue
         cards = Array(1...queue.users).map({ createView(location: startLocation, position: $0) })
-        animateIn()
+        animateIn(completion: completion)
     }
 
-    func animateIn() {
+    func animateIn(completion: (() -> Void)? = nil) {
         let allCards = cards.sorted(by: { $0.linePosition ?? 0 < $1.linePosition ?? 0 })
         var cardsToMove: [CardView] = allCards.filter({ $0.currentLocation != startLocation})
         if let nextCard = allCards.first(where: { $0.currentLocation == startLocation }) {
@@ -65,26 +71,30 @@ class MarchingCardsView: UIView {
             },
             completion: { [weak self] finished in
                 if (cardsToMove.first(where: { $0.linePosition == self?.queue?.currentPosition && $0.currentLocation == 0 }) == nil) {
-                    self?.animateIn()
+                    self?.animateIn(completion: completion)
+                } else {
+                    completion?()
                 }
             })
     }
 
-    func updateQueue(_ newQueue: Queue) {
+    func updateQueue(_ newQueue: Queue, completion: (() -> Void)? = nil) {
         guard newQueue.currentPosition <= newQueue.users else {
-            removeCards()
+            removeCards(completion: completion)
             return
         }
 
         guard let queue = queue else {
-            animateIn(newQueue)
+            animateIn(newQueue, completion: completion)
             return
         }
 
         marchCards(stepCount: queue.currentPosition - newQueue.currentPosition) {
-            self.adjustCards(cardsCount: queue.users - newQueue.users)
+            self.adjustCards(cardsCount: queue.users - newQueue.users) {
+                self.queue = newQueue
+                completion?()
+            }
         }
-        self.queue = newQueue
     }
 
     func marchCards(stepCount: Int, completion: @escaping () -> ()) {
@@ -109,34 +119,35 @@ class MarchingCardsView: UIView {
         })
     }
 
-    func adjustCards(cardsCount: Int) {
+    func adjustCards(cardsCount: Int, completion: (() -> Void)? = nil) {
         guard cardsCount != 0 else {
+            completion?()
             return
         }
 
         if cardsCount < 0 {
-            addCards(count: abs(cardsCount))
+            addCards(count: abs(cardsCount), completion: completion)
         } else {
-            dropCards(count: cardsCount)
+            dropCards(count: cardsCount, completion: completion)
         }
     }
 
-    func addCards(count: Int) {
+    func addCards(count: Int, completion: (() -> Void)? = nil) {
         let lastPosition = sortedCards.last?.linePosition ?? 1
         let newLastPosition = lastPosition + count
         let newCards = Array(lastPosition + 1...newLastPosition).map({ self.createView(location: startLocation, position: $0) })
-        self.viewsAnimate(cards: newCards, direction: .right)
+        self.viewsAnimate(cards: newCards, direction: .right, completion: completion)
     }
 
-    func dropCards(count: Int) {
+    func dropCards(count: Int, completion: (() -> Void)? = nil) {
         let dropIndex = self.sortedCards.count - count
         let dropCards = Array(self.cards[dropIndex...])
-        self.removeCards(cards: dropCards)
         self.cards = Array(self.cards[..<dropIndex])
+        self.removeCards(cards: dropCards, completion: completion)
     }
 
-    func viewsAnimate(cards: [CardView], direction: AnimationDirection) {
-        let allCards = self.cards.sorted(by: { $0.linePosition ?? 0 < $1.linePosition ?? 0 })
+    func viewsAnimate(cards: [CardView], direction: AnimationDirection, completion: (() -> Void)? = nil) {
+        let allCards = self.sortedCards
         let newCards = cards.sorted(by: { $0.linePosition ?? 0 < $1.linePosition ?? 0 })
         let target = (allCards.last?.currentLocation ?? 1) + 1
         var cardsToMove: [CardView] = newCards.filter({ $0.currentLocation != startLocation})
@@ -144,8 +155,10 @@ class MarchingCardsView: UIView {
             cardsToMove.append(nextCard)
         }
         guard target < startLocation else {
+            completion?()
             return
         }
+
         UIView.animate(
             withDuration: 0.1,
             delay: 0.0,
@@ -154,22 +167,23 @@ class MarchingCardsView: UIView {
                 cardsToMove.forEach({
                     self.viewAnimate(view: $0, direction: direction)
                 })
-        },
+            },
             completion: { [weak self] finished in
                 if (newCards.first(where: { $0.currentLocation == target }) == nil) {
-                    self?.viewsAnimate(cards: newCards, direction: direction)
+                    self?.viewsAnimate(cards: newCards, direction: direction, completion: completion)
                 } else {
                     self?.cards.append(contentsOf: newCards)
+                    completion?()
                 }
-        })
+            })
     }
 
-    func removeCards() {
+    func removeCards(completion: (() -> Void)? = nil) {
         queue = nil
-        removeCards(cards: cards)
+        removeCards(cards: cards, completion: completion)
     }
 
-    func removeCards(cards: [CardView]) {
+    func removeCards(cards: [CardView], completion: (() -> Void)? = nil) {
         UIView.animate(
             withDuration: 0.2,
             delay: 0.0,
@@ -182,6 +196,7 @@ class MarchingCardsView: UIView {
         },
             completion: { finished in
                 cards.forEach({ $0.removeFromSuperview() })
+                completion?()
         })
     }
 
@@ -204,10 +219,10 @@ class MarchingCardsView: UIView {
         let cards: [CGFloat] = Array(0..<Int(index)).map({ CGFloat($0) })
         var offset: CGFloat = 0
         if index == 0 {
-            offset = offset - width - (calculateWidth(for: 1) / 2)
+            offset = offset - width - margin - (calculateWidth(for: 1) / 2)
         }
         if index == 1 {
-            offset = offset - width / 2
+            offset = offset - margin - width / 2
         }
 
         offset = offset + cards.reduce(0) { (result, i) -> CGFloat in
@@ -217,13 +232,21 @@ class MarchingCardsView: UIView {
                 offsetValue = offsetValue - (width)
             }
             if i == 1 {
-                offsetValue = offsetValue - (width / 2)
+                offsetValue = offsetValue - margin - (width / 2)
             }
             return result + offsetValue + margin + width
         }
 
         let height = width * 1.18
-        let bar = CGRect(x: offset, y: maxHeight - height, width: width, height: height)
+        let bar = CGRect(x: offset - 2.5, y: maxHeight - height, width: width, height: height)
+
+//        let shapeLayer = CAShapeLayer()
+//        let rect = UIBezierPath(rect: bar)
+//        rect.lineWidth = 1.0
+//        shapeLayer.path = rect.cgPath
+//        shapeLayer.fillColor = UIColor.red.cgColor
+//        layer.addSublayer(shapeLayer)
+
         positions[Int(position)] = bar
     }
 
@@ -252,7 +275,17 @@ class MarchingCardsView: UIView {
     }
 
     func getAlpha(for location: Int) -> CGFloat {
-        return 1 - CGFloat(abs(location)) * 0.2
+        guard location != 0 else {
+            return 1
+        }
+
+        let cardsPerSide = startLocation - 1
+        let target = abs(location)
+        guard target > 0 else {
+            return 0.9
+        }
+
+        return 1 - Array(1...target).map({ max(CGFloat(cardsPerSide - $0) / 10, 0) }).reduce(0, +)
     }
 }
 

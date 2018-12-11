@@ -78,13 +78,17 @@ class ViewController: UIViewController {
 //        DispatchQueue.main.asyncAfter(deadline: .now() + 1.0, execute: { [weak self] in
 //            self?.flip(views: views)
 //        })
+        //coinView.center.x = queueGraph.cardCenterX
     }
 
     @IBAction func resetCards(_ sender: Any) {
         queueGraph.removeCards()
-        queueGraph.animateIn(Queue(users: users, currentPosition: currentPosition))
+        coinView.animate()
+        coinView.position = currentPosition
+        queueGraph.animateIn(Queue(users: users, currentPosition: currentPosition)) {
+            self.coinView.stopAnimate()
+        }
         hasAnimated = true
-        coinView.stopAnimate()
     }
 
     @IBAction func animateCards(_ sender: Any) {
@@ -98,7 +102,10 @@ class ViewController: UIViewController {
 
         hasAnimated = true
         coinView.animate()
-        queueGraph.updateQueue(Queue(users: users, currentPosition: currentPosition))
+        coinView.position = currentPosition
+        queueGraph.updateQueue(Queue(users: users, currentPosition: currentPosition)) {
+            self.coinView.stopAnimate()
+        }
     }
 
     @IBAction func userCountChanged(_ sender: Any) {
@@ -107,13 +114,13 @@ class ViewController: UIViewController {
 
     @IBAction func currentPositionChanged(_ sender: Any) {
         let currentPosition = Int(currentPositionSlider.value)
-        coinView.position = currentPosition
         currentPositionLabel.text = "\(currentPosition)"
     }
 }
 
 class CoinView: UIView {
     var currentPositionLabel: UILabel?
+    var pointerView: UIView?
     var position: Int? {
         didSet {
             currentPositionLabel?.attributedText = getPositionText(position: position)
@@ -141,16 +148,18 @@ class CoinView: UIView {
     func setup() {
         translatesAutoresizingMaskIntoConstraints = false
         createLabel()
+        createPointer()
+        borderColor = .lcmSunflowerYellow
     }
 
     func animate() {
         shouldAnimate = true
+        pointerView?.isHidden = true
         spinView()
     }
 
     func stopAnimate() {
         shouldAnimate = false
-        //spinView()
     }
 
     func spinView() {
@@ -164,6 +173,7 @@ class CoinView: UIView {
                     return
                 }
                 self.currentPositionLabel?.alpha = 1
+                self.pointerView?.isHidden = false
                 return
             }
 
@@ -178,6 +188,17 @@ class CoinView: UIView {
         label.translatesAutoresizingMaskIntoConstraints = false
         label.layoutCenterX()
         label.layoutCenterY()
+    }
+
+    private func createPointer() {
+        let pointer = UIView()
+        pointer.translatesAutoresizingMaskIntoConstraints = false
+        pointer.backgroundColor = .lcmSunflowerYellow
+        addSubview(pointer)
+        pointer.layoutCenterX()
+        pointer.topAnchor.constraint(equalToSystemSpacingBelow: self.bottomAnchor, multiplier: 0).isActive = true
+        pointer.layoutSize(5.0, by: 22.0)
+        pointerView = pointer
     }
 
     private func getPositionText(position: Int?) -> NSMutableAttributedString? {

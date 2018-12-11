@@ -10,7 +10,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "BarGraph/ShowerBusyGraphView.swift"
-            timestampString = "565916583.69098"
+            timestampString = "566260342.140406"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "219"
@@ -24,7 +24,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "BarGraph/ShowerBusyGraphView.swift"
-            timestampString = "565916583.691049"
+            timestampString = "566260342.14047"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "219"
@@ -38,7 +38,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "BarGraph/ShowerBusyGraphView.swift"
-            timestampString = "565916583.691102"
+            timestampString = "566260342.140533"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "219"
@@ -52,43 +52,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "BarGraph/MarchingCardsView.swift"
-            timestampString = "566181084.8147891"
+            timestampString = "566260342.140623"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "228"
-            endingLineNumber = "228"
-            landmarkName = "createLocations(index:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "BarGraph/MarchingCardsView.swift"
-            timestampString = "566181084.816021"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "33"
-            endingLineNumber = "33"
-            landmarkName = "layoutSubviews()"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "BarGraph/MarchingCardsView.swift"
-            timestampString = "566181084.8167959"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "238"
-            endingLineNumber = "238"
+            startingLineNumber = "261"
+            endingLineNumber = "261"
             landmarkName = "createView(location:position:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -100,11 +68,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "BarGraph/MarchingCardsView.swift"
-            timestampString = "566181084.817605"
+            timestampString = "566260342.141593"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "242"
-            endingLineNumber = "242"
+            startingLineNumber = "265"
+            endingLineNumber = "265"
             landmarkName = "createView(location:position:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -116,11 +84,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "BarGraph/MarchingCardsView.swift"
-            timestampString = "566181084.818377"
+            timestampString = "566260342.142387"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "188"
-            endingLineNumber = "188"
+            startingLineNumber = "203"
+            endingLineNumber = "203"
             landmarkName = "viewAnimate(view:direction:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -132,11 +100,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "BarGraph/MarchingCardsView.swift"
-            timestampString = "566181084.819097"
+            timestampString = "566260342.14317"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "230"
-            endingLineNumber = "230"
+            startingLineNumber = "253"
+            endingLineNumber = "253"
             landmarkName = "calculateWidth(for:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -148,11 +116,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "BarGraph/ViewController.swift"
-            timestampString = "566181084.819806"
+            timestampString = "566260342.143659"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "101"
-            endingLineNumber = "101"
+            startingLineNumber = "106"
+            endingLineNumber = "106"
             landmarkName = "animateCards(_:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -164,12 +132,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "BarGraph/MarchingCardsView.swift"
-            timestampString = "566181084.8198839"
+            timestampString = "566260342.143927"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "141"
-            endingLineNumber = "141"
-            landmarkName = "viewsAnimate(cards:direction:)"
+            startingLineNumber = "152"
+            endingLineNumber = "152"
+            landmarkName = "viewsAnimate(cards:direction:completion:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -180,11 +148,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "BarGraph/MarchingCardsView.swift"
-            timestampString = "566181084.820707"
+            timestampString = "566260342.144467"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "243"
-            endingLineNumber = "243"
+            startingLineNumber = "266"
+            endingLineNumber = "266"
             landmarkName = "createView(location:position:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -196,60 +164,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "BarGraph/MarchingCardsView.swift"
-            timestampString = "566181084.821839"
+            timestampString = "566260342.1448931"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "159"
-            endingLineNumber = "159"
-            landmarkName = "viewsAnimate(cards:direction:)"
-            landmarkType = "7">
-            <Locations>
-               <Location
-                  shouldBeEnabled = "No"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #6 (Swift.Bool) -&gt; () in BarGraph.MarchingCardsView.viewsAnimate(cards: Swift.Array&lt;BarGraph.CardView&gt;, direction: BarGraph.AnimationDirection) -&gt; ()"
-                  moduleName = "BarGraph"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/icetrae/Documents/Xcode_repo/BarGraph/BarGraph/MarchingCardsView.swift"
-                  timestampString = "565911998.363109"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "184"
-                  endingLineNumber = "184"
-                  offsetFromSymbolStart = "90">
-               </Location>
-               <Location
-                  shouldBeEnabled = "No"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #1 (BarGraph.CardView) -&gt; Swift.Bool in closure #6 (Swift.Bool) -&gt; () in BarGraph.MarchingCardsView.viewsAnimate(cards: Swift.Array&lt;BarGraph.CardView&gt;, direction: BarGraph.AnimationDirection) -&gt; ()"
-                  moduleName = "BarGraph"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/icetrae/Documents/Xcode_repo/BarGraph/BarGraph/MarchingCardsView.swift"
-                  timestampString = "565911998.36658"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "184"
-                  endingLineNumber = "184"
-                  offsetFromSymbolStart = "34">
-               </Location>
-            </Locations>
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "BarGraph/MarchingCardsView.swift"
-            timestampString = "566181084.8225451"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "125"
-            endingLineNumber = "125"
-            landmarkName = "addCards(count:)"
+            startingLineNumber = "136"
+            endingLineNumber = "136"
+            landmarkName = "addCards(count:completion:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -260,12 +180,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "BarGraph/MarchingCardsView.swift"
-            timestampString = "566181084.823229"
+            timestampString = "566260342.145264"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "117"
-            endingLineNumber = "117"
-            landmarkName = "adjustCards(cardsCount:)"
+            startingLineNumber = "128"
+            endingLineNumber = "128"
+            landmarkName = "adjustCards(cardsCount:completion:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -276,11 +196,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "BarGraph/MarchingCardsView.swift"
-            timestampString = "566181084.8238029"
+            timestampString = "566260342.145643"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "91"
-            endingLineNumber = "91"
+            startingLineNumber = "101"
+            endingLineNumber = "101"
             landmarkName = "marchCards(stepCount:completion:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -292,11 +212,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "BarGraph/MarchingCardsView.swift"
-            timestampString = "566181084.8243999"
+            timestampString = "566260342.146023"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "108"
-            endingLineNumber = "108"
+            startingLineNumber = "118"
+            endingLineNumber = "118"
             landmarkName = "marchCards(stepCount:completion:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -308,12 +228,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "BarGraph/MarchingCardsView.swift"
-            timestampString = "566181084.824981"
+            timestampString = "566260342.1463979"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "39"
-            endingLineNumber = "39"
-            landmarkName = "animateIn(_:)"
+            startingLineNumber = "45"
+            endingLineNumber = "45"
+            landmarkName = "animateIn(_:completion:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -324,90 +244,42 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "BarGraph/MarchingCardsView.swift"
-            timestampString = "566181084.825516"
+            timestampString = "566260342.146778"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "67"
-            endingLineNumber = "67"
-            landmarkName = "animateIn()"
+            startingLineNumber = "57"
+            endingLineNumber = "57"
+            landmarkName = "animateIn(completion:)"
             landmarkType = "7">
             <Locations>
                <Location
                   shouldBeEnabled = "No"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
-                  symbolName = "function signature specialization &lt;Arg[1] = Value Promoted from Box&gt; of closure #5 (Swift.Bool) -&gt; () in BarGraph.MarchingCardsView.animateIn() -&gt; ()"
+                  symbolName = "BarGraph.MarchingCardsView.animateIn(completion: Swift.Optional&lt;() -&gt; ()&gt;) -&gt; ()"
                   moduleName = "BarGraph"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/icetrae/Documents/Xcode_repo/BarGraph/BarGraph/MarchingCardsView.swift"
-                  timestampString = "565918182.320567"
+                  timestampString = "566251489.093722"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "68"
-                  endingLineNumber = "68"
-                  offsetFromSymbolStart = "60">
+                  startingLineNumber = "57"
+                  endingLineNumber = "57"
+                  offsetFromSymbolStart = "66">
                </Location>
                <Location
                   shouldBeEnabled = "No"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
-                  symbolName = "closure #1 (BarGraph.CardView) -&gt; Swift.Bool in closure #5 (Swift.Bool) -&gt; () in BarGraph.MarchingCardsView.animateIn() -&gt; ()"
+                  symbolName = "closure #1 (BarGraph.CardView, BarGraph.CardView) -&gt; Swift.Bool in BarGraph.MarchingCardsView.animateIn(completion: Swift.Optional&lt;() -&gt; ()&gt;) -&gt; ()"
                   moduleName = "BarGraph"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/icetrae/Documents/Xcode_repo/BarGraph/BarGraph/MarchingCardsView.swift"
-                  timestampString = "565918182.322885"
+                  timestampString = "566251489.095569"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "67"
-                  endingLineNumber = "67"
-                  offsetFromSymbolStart = "40">
-               </Location>
-            </Locations>
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "BarGraph/MarchingCardsView.swift"
-            timestampString = "566181084.826048"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "51"
-            endingLineNumber = "51"
-            landmarkName = "animateIn()"
-            landmarkType = "7">
-            <Locations>
-               <Location
-                  shouldBeEnabled = "No"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "BarGraph.MarchingCardsView.animateIn() -&gt; ()"
-                  moduleName = "BarGraph"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/icetrae/Documents/Xcode_repo/BarGraph/BarGraph/MarchingCardsView.swift"
-                  timestampString = "565918184.64107"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "52"
-                  endingLineNumber = "52"
-                  offsetFromSymbolStart = "58">
-               </Location>
-               <Location
-                  shouldBeEnabled = "No"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #1 (BarGraph.CardView, BarGraph.CardView) -&gt; Swift.Bool in BarGraph.MarchingCardsView.animateIn() -&gt; ()"
-                  moduleName = "BarGraph"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/icetrae/Documents/Xcode_repo/BarGraph/BarGraph/MarchingCardsView.swift"
-                  timestampString = "565918184.643289"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "52"
-                  endingLineNumber = "52"
+                  startingLineNumber = "57"
+                  endingLineNumber = "57"
                   offsetFromSymbolStart = "41">
                </Location>
             </Locations>
@@ -420,12 +292,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "BarGraph/MarchingCardsView.swift"
-            timestampString = "566181084.826579"
+            timestampString = "566260342.147161"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "47"
-            endingLineNumber = "47"
-            landmarkName = "animateIn(_:)"
+            startingLineNumber = "53"
+            endingLineNumber = "53"
+            landmarkName = "animateIn(_:completion:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -436,7 +308,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "BarGraph/ViewController.swift"
-            timestampString = "566181084.827162"
+            timestampString = "566260342.147542"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "38"
@@ -452,11 +324,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "BarGraph/ViewController.swift"
-            timestampString = "566181084.827225"
+            timestampString = "566260342.147781"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "119"
-            endingLineNumber = "119"
+            startingLineNumber = "126"
+            endingLineNumber = "126"
             landmarkName = "position"
             landmarkType = "24">
          </BreakpointContent>
@@ -468,12 +340,268 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "BarGraph/ViewController.swift"
-            timestampString = "566181084.8273489"
+            timestampString = "566260342.148025"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "170"
-            endingLineNumber = "170"
+            startingLineNumber = "180"
+            endingLineNumber = "180"
             landmarkName = "spinView()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "BarGraph/ViewController.swift"
+            timestampString = "566260342.148267"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "87"
+            endingLineNumber = "87"
+            landmarkName = "resetCards(_:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "BarGraph/MarchingCardsView.swift"
+            timestampString = "566260342.14851"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "76"
+            endingLineNumber = "76"
+            landmarkName = "animateIn(completion:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "BarGraph/MarchingCardsView.swift"
+            timestampString = "566260342.148836"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "74"
+            endingLineNumber = "74"
+            landmarkName = "animateIn(completion:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "BarGraph/MarchingCardsView.swift"
+            timestampString = "566260342.149127"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "95"
+            endingLineNumber = "95"
+            landmarkName = "updateQueue(_:completion:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "BarGraph/MarchingCardsView.swift"
+            timestampString = "566260342.149412"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "94"
+            endingLineNumber = "94"
+            landmarkName = "updateQueue(_:completion:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "BarGraph/MarchingCardsView.swift"
+            timestampString = "566260342.1497051"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "93"
+            endingLineNumber = "93"
+            landmarkName = "updateQueue(_:completion:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 () -&gt; () in BarGraph.MarchingCardsView.updateQueue(_: BarGraph.Queue, completion: Swift.Optional&lt;() -&gt; ()&gt;) -&gt; ()"
+                  moduleName = "BarGraph"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/icetrae/Documents/Xcode_repo/BarGraph/BarGraph/MarchingCardsView.swift"
+                  timestampString = "566249887.77096"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "87"
+                  endingLineNumber = "87"
+                  offsetFromSymbolStart = "53">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 () -&gt; () in closure #1 () -&gt; () in BarGraph.MarchingCardsView.updateQueue(_: BarGraph.Queue, completion: Swift.Optional&lt;() -&gt; ()&gt;) -&gt; ()"
+                  moduleName = "BarGraph"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/icetrae/Documents/Xcode_repo/BarGraph/BarGraph/MarchingCardsView.swift"
+                  timestampString = "566249887.772791"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "88"
+                  endingLineNumber = "88"
+                  offsetFromSymbolStart = "47">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "BarGraph/MarchingCardsView.swift"
+            timestampString = "566260342.149986"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "123"
+            endingLineNumber = "123"
+            landmarkName = "adjustCards(cardsCount:completion:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "BarGraph/MarchingCardsView.swift"
+            timestampString = "566260342.1502841"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "172"
+            endingLineNumber = "172"
+            landmarkName = "viewsAnimate(cards:direction:completion:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #5 (Swift.Bool) -&gt; () in BarGraph.MarchingCardsView.viewsAnimate(cards: Swift.Array&lt;BarGraph.CardView&gt;, direction: BarGraph.AnimationDirection, completion: Swift.Optional&lt;() -&gt; ()&gt;) -&gt; ()"
+                  moduleName = "BarGraph"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/icetrae/Documents/Xcode_repo/BarGraph/BarGraph/MarchingCardsView.swift"
+                  timestampString = "566250242.6514699"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "164"
+                  endingLineNumber = "164"
+                  offsetFromSymbolStart = "102">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (BarGraph.CardView) -&gt; Swift.Bool in closure #5 (Swift.Bool) -&gt; () in BarGraph.MarchingCardsView.viewsAnimate(cards: Swift.Array&lt;BarGraph.CardView&gt;, direction: BarGraph.AnimationDirection, completion: Swift.Optional&lt;() -&gt; ()&gt;) -&gt; ()"
+                  moduleName = "BarGraph"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/icetrae/Documents/Xcode_repo/BarGraph/BarGraph/MarchingCardsView.swift"
+                  timestampString = "566250242.654651"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "164"
+                  endingLineNumber = "164"
+                  offsetFromSymbolStart = "34">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "BarGraph/MarchingCardsView.swift"
+            timestampString = "566260342.1505719"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "150"
+            endingLineNumber = "150"
+            landmarkName = "viewsAnimate(cards:direction:completion:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "BarGraph/MarchingCardsView.swift"
+            timestampString = "566260342.150859"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "217"
+            endingLineNumber = "217"
+            landmarkName = "createLocations(index:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "BarGraph/MarchingCardsView.swift"
+            timestampString = "566260342.151124"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "251"
+            endingLineNumber = "251"
+            landmarkName = "createLocations(index:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "BarGraph/MarchingCardsView.swift"
+            timestampString = "566260342.151389"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "42"
+            endingLineNumber = "42"
+            landmarkName = "layoutSubviews()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
