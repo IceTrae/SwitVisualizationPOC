@@ -239,7 +239,7 @@ class MarchingCardsView: UIView {
         view.alpha = getAlpha(for: location)
         view.currentLocation = location
         view.linePosition = position
-        view.backgroundColor = .white
+        view.backgroundColor = .lcmCoolGray
         addSubview(view)
 //        let shapeLayer = CAShapeLayer()
 //        let layerRec = CGRect(origin: convert(rect.origin, to: view), size: rect.size)

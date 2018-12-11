@@ -82,12 +82,42 @@
                                     <action selector="resetCards:" destination="BYZ-38-t0r" eventType="touchUpInside" id="jNF-CJ-Z49"/>
                                 </connections>
                             </button>
+                            <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="0Wd-mi-eoy" userLabel="Coin" customClass="CoinView" customModule="BarGraph" customModuleProvider="target">
+                                <rect key="frame" x="121.5" y="167" width="132" height="94"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="132" id="Y6S-qC-lmE"/>
+                                    <constraint firstAttribute="width" constant="132" id="m6S-Yn-czx"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="66"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="shadowRadius">
+                                        <real key="value" value="66"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                        <color key="value" red="1" green="0.98893147141125026" blue="0.14164900647040024" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="shadowOpacity">
+                                        <real key="value" value="1"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                        <real key="value" value="4"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="size" keyPath="shadowOffset">
+                                        <size key="value" width="50" height="50"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="shadowColor">
+                                        <color key="value" red="0.075701069009999997" green="0.66666668650000005" blue="0.070244576990000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" red="0.14901960784313725" green="0.16078431372549018" blue="0.22745098039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="FTy-Hc-hQg" secondAttribute="trailing" constant="8" id="2kl-jD-a5g"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="PIZ-aU-ido" secondAttribute="trailing" constant="16" id="48V-1J-QAe"/>
-                            <constraint firstItem="m4v-z7-6tO" firstAttribute="top" secondItem="PIZ-aU-ido" secondAttribute="bottom" constant="75" id="4zM-qc-1e6"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="VLg-Mg-bnM" secondAttribute="trailing" id="8mu-fB-JGD"/>
                             <constraint firstItem="FTy-Hc-hQg" firstAttribute="top" secondItem="Md3-mn-JHS" secondAttribute="bottom" constant="4" id="IeY-u9-pNG"/>
                             <constraint firstItem="Ujc-2b-Ufb" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="JKS-hC-LL2"/>
@@ -95,6 +125,8 @@
                             <constraint firstItem="Rb9-Yc-QJd" firstAttribute="top" secondItem="lMd-02-FKs" secondAttribute="bottom" constant="4" id="QHe-HX-E6Y"/>
                             <constraint firstItem="VLg-Mg-bnM" firstAttribute="top" secondItem="m4v-z7-6tO" secondAttribute="bottom" constant="1" id="Qyi-rG-1a9"/>
                             <constraint firstAttribute="trailing" secondItem="m4v-z7-6tO" secondAttribute="trailing" id="VEt-o7-Znc"/>
+                            <constraint firstItem="m4v-z7-6tO" firstAttribute="top" secondItem="0Wd-mi-eoy" secondAttribute="bottom" constant="14" id="Vpe-nL-8zh"/>
+                            <constraint firstItem="0Wd-mi-eoy" firstAttribute="top" secondItem="PIZ-aU-ido" secondAttribute="bottom" constant="50" id="WBs-xl-fS2"/>
                             <constraint firstItem="GiH-fJ-wpe" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="WVZ-6J-t8g"/>
                             <constraint firstItem="FTy-Hc-hQg" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="8" id="XZk-d7-x8r"/>
                             <constraint firstItem="Md3-mn-JHS" firstAttribute="top" secondItem="pkI-rb-VQc" secondAttribute="bottom" constant="4" id="ZIn-mB-89L"/>
@@ -104,6 +136,7 @@
                             <constraint firstItem="VLg-Mg-bnM" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="gzu-up-lFb"/>
                             <constraint firstItem="lMd-02-FKs" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="h5F-Xo-Dxt"/>
                             <constraint firstAttribute="bottom" secondItem="GiH-fJ-wpe" secondAttribute="bottom" constant="8" id="m5n-8K-ZKs"/>
+                            <constraint firstItem="0Wd-mi-eoy" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="ohf-BF-gMG"/>
                             <constraint firstItem="Ujc-2b-Ufb" firstAttribute="top" secondItem="Rb9-Yc-QJd" secondAttribute="bottom" constant="8" id="pID-xo-acn"/>
                             <constraint firstItem="Md3-mn-JHS" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="pnH-Tx-5GA"/>
                             <constraint firstItem="Rb9-Yc-QJd" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="8" id="q6j-QA-yxo"/>
@@ -116,6 +149,7 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <connections>
+                        <outlet property="coinView" destination="0Wd-mi-eoy" id="Ghq-X5-scg"/>
                         <outlet property="currentPositionLabel" destination="lMd-02-FKs" id="7kb-di-J5Z"/>
                         <outlet property="currentPositionSlider" destination="Rb9-Yc-QJd" id="mTp-8N-6OF"/>
                         <outlet property="queueGraph" destination="m4v-z7-6tO" id="oHn-Ne-AHE"/>

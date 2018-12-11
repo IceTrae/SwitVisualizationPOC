@@ -6,6 +6,7 @@ class ViewController: UIViewController {
     @IBOutlet weak var userCountSlider: UISlider!
     @IBOutlet weak var currentPositionLabel: UILabel!
     @IBOutlet weak var currentPositionSlider: UISlider!
+    @IBOutlet weak var coinView: CoinView!
 
     var currentPosition: Int {
         get {
@@ -31,16 +32,59 @@ class ViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+    }
+
+    @objc func flip(views: [UIView]) {
+        guard views.count >= 2 else {
+            return
+        }
+
+        let transitionOptions: UIView.AnimationOptions = [.transitionFlipFromLeft, .showHideTransitionViews]
+        UIView.transition(from: views[0], to: views[1], duration: 0.4, options: transitionOptions) { complete in
+            self.flip(views: views.reversed())
+        }
+
+//        UIView.transition(with: firstView, duration: 1.0, options: transitionOptions, animations: {
+//            self.firstView.isHidden = true
+//        }) { complete in
+//            guard complete else {
+//                return
+//            }
+//
+//            UIView.transition(with: self.secondView, duration: 1.0, options: transitionOptions, animations: {
+//                self.secondView.isHidden = false
+//            })
+//        }
+
+        //UIView.transition(from: firstView, to: secondView, duration: 2.0, options: transitionOptions) { complete in
+
+        //}
+//        UIView.transition(with: firstView, duration: 1.0, options: transitionOptions, animations: {
+//            self.firstView.isHidden = true
+//        } )
+//
+//        UIView.transition(with: secondView, duration: 1.0, options: transitionOptions, animations: {
+//            self.secondView.isHidden = false
+//        })
     }
 
     override func viewWillAppear(_ animated: Bool) {
+    }
+
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+
+//        let views = [firstView!, secondView!]
+//        DispatchQueue.main.asyncAfter(deadline: .now() + 1.0, execute: { [weak self] in
+//            self?.flip(views: views)
+//        })
     }
 
     @IBAction func resetCards(_ sender: Any) {
         queueGraph.removeCards()
         queueGraph.animateIn(Queue(users: users, currentPosition: currentPosition))
         hasAnimated = true
+        coinView.stopAnimate()
     }
 
     @IBAction func animateCards(_ sender: Any) {
@@ -53,6 +97,7 @@ class ViewController: UIViewController {
         }
 
         hasAnimated = true
+        coinView.animate()
         queueGraph.updateQueue(Queue(users: users, currentPosition: currentPosition))
     }
 
@@ -61,7 +106,95 @@ class ViewController: UIViewController {
     }
 
     @IBAction func currentPositionChanged(_ sender: Any) {
-        currentPositionLabel.text = "\(Int(currentPositionSlider.value))"
+        let currentPosition = Int(currentPositionSlider.value)
+        coinView.position = currentPosition
+        currentPositionLabel.text = "\(currentPosition)"
+    }
+}
+
+class CoinView: UIView {
+    var currentPositionLabel: UILabel?
+    var position: Int? {
+        didSet {
+            currentPositionLabel?.attributedText = getPositionText(position: position)
+        }
+    }
+    var faceUp: Bool = true {
+        didSet {
+            currentPositionLabel?.isHidden = !faceUp
+            setNeedsLayout()
+            setNeedsDisplay()
+        }
+    }
+    var shouldAnimate = false
+
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        setup()
+    }
+
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+        setup()
+    }
+
+    func setup() {
+        translatesAutoresizingMaskIntoConstraints = false
+        createLabel()
+    }
+
+    func animate() {
+        shouldAnimate = true
+        spinView()
+    }
+
+    func stopAnimate() {
+        shouldAnimate = false
+        //spinView()
+    }
+
+    func spinView() {
+        UIView.transition(with: self, duration: 0.4, options: [.transitionFlipFromLeft], animations: {
+            self.faceUp = !self.faceUp
+            self.currentPositionLabel?.alpha = self.shouldAnimate ? 0 : 1
+        }) { complete in
+            guard self.shouldAnimate else {
+                if !self.faceUp {
+                    self.spinView()
+                    return
+                }
+                self.currentPositionLabel?.alpha = 1
+                return
+            }
+
+            self.spinView()
+        }
+    }
+
+    private func createLabel() {
+        let label = UILabel()
+        currentPositionLabel = label
+        addSubview(label)
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.layoutCenterX()
+        label.layoutCenterY()
+    }
+
+    private func getPositionText(position: Int?) -> NSMutableAttributedString? {
+        guard let position = position else {
+            return nil
+        }
+
+        let attributedString = NSMutableAttributedString(string: "#\(position)", attributes: [
+            .font: LCMFontBook.extraBold.of(size: 57.6),
+            .foregroundColor: UIColor(white: 1.0, alpha: 1.0),
+            .kern: 0.0
+            ])
+        attributedString.addAttribute(
+            .font,
+            value: LCMFontBook.regular.of(size: 28.08),
+            range: NSRange(location: 0, length: 1))
+        return attributedString
     }
 }
 
