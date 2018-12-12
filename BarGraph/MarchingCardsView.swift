@@ -105,18 +105,29 @@ class MarchingCardsView: UIView {
 
         let direction: AnimationDirection = stepCount > 0 ? .left : .right
         let addend = stepCount.signum() * -1
+        let cards = self.sortedCards
+        let lastCardIndex = cards.firstIndex(where: { $0.currentLocation == self.startLocation }) ?? cards.count - 1
+        let cardsToMove = direction == .right ? Array(cards[...lastCardIndex]) : cards
+        //let cards = direction == .right ? self.sortedCards : self.sortedCards.reversed()
         UIView.animate(
-            withDuration: 0.5,
+            withDuration: marchSpeedCalculator(steps: stepCount),
             delay: 0.0,
-            options: [.curveEaseInOut, .allowUserInteraction],
+            options: [.curveEaseInOut],
             animations: {
-                self.cards.forEach({
+                cardsToMove.forEach({
                     self.viewAnimate(view: $0, direction: direction)
                 })
         },
             completion: { [weak self] finished in
                 self?.marchCards(stepCount: stepCount + addend, completion: completion)
         })
+    }
+
+    func marchSpeedCalculator(steps: Int) -> TimeInterval {
+        let percentage = 1 - Double(abs(steps)) / Double(cards.count)
+        let topSpeed = 0.05
+        let bottomSpeed = 0.4
+        return (bottomSpeed - topSpeed) * percentage + topSpeed
     }
 
     func adjustCards(cardsCount: Int, completion: (() -> Void)? = nil) {
@@ -203,7 +214,7 @@ class MarchingCardsView: UIView {
     func viewAnimate(view: CardView, direction: AnimationDirection) {
         let modifier = direction == .right ? -1 : 1
         let nextLocation = view.currentLocation + modifier
-        view.currentLocation = nextLocation
+        view.currentLocation = min(nextLocation, startLocation)
         guard let destination = positions[nextLocation] else {
             view.alpha = 0
             return
@@ -240,12 +251,14 @@ class MarchingCardsView: UIView {
         let height = width * 1.18
         let bar = CGRect(x: offset - 2.5, y: maxHeight - height, width: width, height: height)
 
-//        let shapeLayer = CAShapeLayer()
-//        let rect = UIBezierPath(rect: bar)
-//        rect.lineWidth = 1.0
-//        shapeLayer.path = rect.cgPath
-//        shapeLayer.fillColor = UIColor.red.cgColor
-//        layer.addSublayer(shapeLayer)
+//        if (position == 4) {
+//            let shapeLayer = CAShapeLayer()
+//            let rect = UIBezierPath(rect: bar)
+//            rect.lineWidth = 1.0
+//            shapeLayer.path = rect.cgPath
+//            shapeLayer.fillColor = UIColor.red.cgColor
+//            layer.addSublayer(shapeLayer)
+//        }
 
         positions[Int(position)] = bar
     }

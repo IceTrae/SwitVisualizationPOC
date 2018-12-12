@@ -168,10 +168,11 @@ class CoinView: UIView {
             self.currentPositionLabel?.alpha = self.shouldAnimate ? 0 : 1
         }) { complete in
             guard self.shouldAnimate else {
-                if !self.faceUp {
+                guard self.faceUp else {
                     self.spinView()
                     return
                 }
+
                 self.currentPositionLabel?.alpha = 1
                 self.pointerView?.isHidden = false
                 return
